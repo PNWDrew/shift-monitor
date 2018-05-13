@@ -3,9 +3,8 @@ Tool to watch your servers status. Height, Consensus and Forging status. Next tu
 
 ## Requisites
 
-* You need to have **Shift** installed;
 * Install this script only in one server;
-* Make sure you **whitelist your IP** in API and Forging sections of Shift *config.json* in all servers;
+* Make sure you **whitelist your server IP** in API and Forging sections of Shift *config.json* in all servers;
 * You need to have **fs, http, https, node-cmd, path** installed in npm, for example: `sudo npm install node-cmd`;
 * Make sure to add your new serverport numbers to your firewall. Instructions: [ShiftProject Wiki](https://www.reddit.com/r/ShiftProject/wiki/guides/delegate#wiki_step_seven_.2014_set_up_a_basic_firewall);
 
@@ -50,9 +49,9 @@ Run in a background process. You can use **screen**:
 
 **node webserver.js** will start a web server which you can access with http://serverip:serverport/ from a web browser like Firefox.
 
-If you access from a device that you have in your servers whitelist, you will be able to obtain almost realtime data.
+You will be able to obtain almost realtime data. A page reloaded every 27 seconds (Shift Block Time).
 
-#### Browser notifications are works perfectly with Firefox Desktop and Mobile browsers.
+### Browser notifications are works perfectly with Firefox Desktop and Mobile browsers.
 
 ### Chromium based browsers
 For using with Chromium based browsers you should use a secure **https** connection for recieving notifications. You can enabled it in **config.json**:
