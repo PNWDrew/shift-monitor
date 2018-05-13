@@ -19,6 +19,17 @@ var port = config.serverport;
 
 var checkMimeType = true;
 
+var round = 0;
+
+get_data_to_json();
+setInterval(get_data_to_json, 27000);
+
+function get_data_to_json() {
+	cmd.run('bash getdata.sh');
+	console.log("Round: " + round);
+	round++;
+}
+
 if(config.ssl.enabled){
 	var https_port = config.ssl.options.port;
 	var options = {
@@ -76,7 +87,7 @@ if(config.ssl.enabled){
 	console.log("Starting web server at https://" + serverUrl + ":" + https_port);
 }
 
-	http.createServer( function(req, res) {
+http.createServer( function(req, res) {
 
 	    var now = new Date();
 	    if(req.url == "/"){
