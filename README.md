@@ -1,4 +1,4 @@
-# Shift Monitor
+# Shift Monitor ( Server Version / [Web Version](https://github.com/MxShift/shift-webmonitor) )
 Tool to watch your servers status. Height, Consensus and Forging status. Next turn and last forged block time.
 
 ## Requisites
@@ -41,7 +41,7 @@ You need to edit **config.json** file with all your proper data. You can use it 
  
 After you finish and save your changes from **config.json**, 
 
-Run in a background process. You can use **screen**:
+Run **webserver.js** in a background process. You can use **screen**:
 
 `screen`
 
