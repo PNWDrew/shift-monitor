@@ -23,8 +23,8 @@ function initialize() {
         $("#loadingData").text("Loading config..");
         var i=1;
         for (var ss in g_setup.servers) {
+            var url = g_setup.servers[ss].http +'://'+ g_setup.servers[ss].ip +':'+ g_setup.servers[ss].port;
             if(!g_setup.servers[ss].testnet) {
-                var url = g_setup.servers[ss].http +'://'+ g_setup.servers[ss].ip +':'+ g_setup.servers[ss].port;
                 var table_row="<tr>"+
                                 "<td id='server"+i+"'><a href='" + url + "'>"+ g_setup.servers[ss].name +"</a></td>"+
                                 "<td id='server"+i+"_height'>undefined</td>"+
