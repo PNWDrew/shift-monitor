@@ -32,7 +32,7 @@ jq -r '.servers|keys[]' $CONFIG |
     v1=$(jq ".servers.$key.testnet" $CONFIG)
     TESTNET="${v1//\"/}"
 
-    RESPONSE=$(curl --fail -s $HTTP://$IP:$PORT/api/loader/status/sync)
+    RESPONSE=$(curl --connect-timeout 2 --fail  -s $HTTP://$IP:$PORT/api/loader/status/sync)
     HEIGHT=$(echo $RESPONSE | jq '.height')
     SYNCING=$(echo $RESPONSE | jq '.syncing')
     CONSENSUS=$(echo $RESPONSE | jq '.consensus')
@@ -44,10 +44,10 @@ jq -r '.servers|keys[]' $CONFIG |
         PUBLICKEY="$M_PUBLICKEY"
     fi
     
-    FORGING=$(curl --fail -s -k $HTTP://$IP:$PORT/api/delegates/forging/status?publicKey=$PUBLICKEY | jq '.enabled')
+    FORGING=$(curl --connect-timeout 2 --fail -s -k $HTTP://$IP:$PORT/api/delegates/forging/status?publicKey=$PUBLICKEY | jq '.enabled')
     if [ "$FORGING" == "true" ]; then
     	DELEGATE_DATA=true
-        RESPONSE=$(curl --fail -s -k $HTTP://$IP:$PORT/api/delegates/get?publicKey=$PUBLICKEY)
+        RESPONSE=$(curl --connect-timeout 2 --fail -s -k $HTTP://$IP:$PORT/api/delegates/get?publicKey=$PUBLICKEY)
         USERNAME=$(echo $RESPONSE | jq '.delegate.username')
         RANK=$(echo $RESPONSE | jq '.delegate.rate')
         APPROVAL=$(echo $RESPONSE | jq '.delegate.approval')
@@ -73,7 +73,7 @@ jq -r '.servers|keys[]' $CONFIG |
         echo "  \"producedblocks\": $PRODUCEDBLOCKS," >> tmp.file
         echo "  \"missedblocks\": $MISSEDBLOCKS," >> tmp.file
       
-        RESPONSE=$(curl --fail -s $HTTP://$IP:$PORT/api/delegates/getNextForgers?limit=101 | jq '.delegates')
+        RESPONSE=$(curl --connect-timeout 2 --fail -s $HTTP://$IP:$PORT/api/delegates/getNextForgers?limit=101 | jq '.delegates')
         n=0
         while [ "$n" -lt "101" ]; do
            v1=$(echo $RESPONSE | jq '.['$n']')
@@ -91,7 +91,7 @@ jq -r '.servers|keys[]' $CONFIG |
 
     	echo "  \"nextturn\": $NEXTTURN," >> tmp.file
 
-        RESPONSE=$(curl --fail -s $HTTP://$IP:$PORT/api/blocks?generatorPublicKey=$PUBLICKEY&limit=1)
+        RESPONSE=$(curl --connect-timeout 2 --fail -s $HTTP://$IP:$PORT/api/blocks?generatorPublicKey=$PUBLICKEY&limit=1)
         FORGED_BLOCK=$(echo $RESPONSE | jq '.blocks[0].height')
 
         echo "  \"forged_block\": $FORGED_BLOCK }" >> tmp.file
