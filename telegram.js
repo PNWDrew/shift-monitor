@@ -23,7 +23,6 @@ function Monitor() {
     var json_data = fs.readFileSync('data.json', 'utf8');
 
     if(IsJsonString(json_data)) {
-
         if(json_badMessage) {
             let message = "%E2%9C%85 JSON file is read. *All is okay.*";
             sendMessage(message);
@@ -57,13 +56,13 @@ function Monitor() {
  
     } else {
         if(!json_badMessage) {
-            timer++;
             if(timer >= timeout){        
                 let message = "%E2%9D%8C *Error!* Can't read JSON file!";
                 sendMessage(message);
                 json_badMessage = true;
                 timer = 0;
             }
+            timer++;
         }
         console.log("Telegram: Error! Can't read JSON file!");
     }
@@ -91,7 +90,6 @@ function isForging(server, forging, testnet) {
 function BadMessage(testnet_forging, mainnet_forging) {
   if(!testnet_badMessage) {
     if(!testnet_forging) {
-      timer++;
       if(timer >= timeout){
           let message = '%E2%80%BC *Testnet* are *not* forging!' + 
           `\n%F0%9F%95%90 Next turn in *${testnet_next_turn}*`;
@@ -101,11 +99,11 @@ function BadMessage(testnet_forging, mainnet_forging) {
           timer = 0;
           console.log('\nTelegram: Testnet are not forging!');
       }
+      timer++;      
     }
   }
   if(!mainnet_badMessage) { 
     if(!mainnet_forging) {
-      timer++;
       if(timer >= timeout){
           let message = '%E2%80%BC *Mainnet* are *not* forging!' + 
           `\n%F0%9F%95%90 Next turn in *${mainnet_next_turn}*`;
@@ -115,6 +113,7 @@ function BadMessage(testnet_forging, mainnet_forging) {
           timer = 0;
           console.log('\nTelegram: Mainnet are not forging!');
       }
+      timer++;      
     }
   }
 }
@@ -152,10 +151,7 @@ function sendMessage(msg) {
 
   res.on('end', () => console.log(json));
 */
-  }).on('error', (e) => {
-  console.error(e);
-  });
-
+  }).on('error', (e) => { console.error(e); });
 }
 
 function nextTurnTime(nextturn){
@@ -164,6 +160,7 @@ function nextTurnTime(nextturn){
         time = (timeg/60);
         minutes = Math.floor(timeg / 60);
         seconds = Math.round((time - minutes) * 60);
+
         var v_nextturn= '';
 
         if(minutes == 0){ 
@@ -171,7 +168,6 @@ function nextTurnTime(nextturn){
         } else{ 
             v_nextturn = minutes + " min "+ seconds + " sec";
         }
-
         return v_nextturn;                      
     } else {
         return v_nextturn = 'SOON';
