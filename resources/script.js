@@ -141,7 +141,7 @@ function get_data_from_json(){
                         my_lastBlock_time =  seconds + " sec"; 
                     } 
                     if(minutes < 45 ){
-                        $("." + net + "_lastBlock").removeClass("usual").addClass("forgingTime");
+                        $("." + net + "_lastBlock").removeClass("usual").removeClass("red").addClass("forgingTime");
                     }
                     if(minutes > 45 ){
                         $("." + net + "_lastBlock").removeClass("forgingTime").addClass("usual");
