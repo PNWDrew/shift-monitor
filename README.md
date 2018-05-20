@@ -5,7 +5,7 @@ Tool to watch your servers status. Height, Consensus and Forging status. Next tu
 
 * Install this script only in one server;
 * Make sure you **whitelist your server IP** in API and Forging sections of Shift *config.json* in all servers;
-* You need to have **fs, http, https, node-cmd, path** installed in npm, for example: `sudo npm install node-cmd`;
+* You need to have **fs, http, node-cmd, path** and **https** (for SLL and Telegram) installed in npm, for example: `sudo npm install node-cmd`;
 * Make sure to add your new serverport numbers to your firewall. Instructions: [ShiftProject Wiki](https://www.reddit.com/r/ShiftProject/wiki/guides/delegate#wiki_step_seven_.2014_set_up_a_basic_firewall);
 
 ## Installation
@@ -41,17 +41,42 @@ You need to edit **config.json** file with all your proper data. You can use it 
  
 After you finish and save your changes from **config.json**, 
 
-Run **webserver.js** in a background process. You can use **screen**:
+Run **server.js** in a background process. You can use **screen**:
 
 `screen`
 
-`node webserver.js`
+`node server.js`
 
-**node webserver.js** will start a web server which you can access with http://serverip:serverport/ from a web browser like Firefox.
+**node server.js** will start a web server which you can access with http://serverip:serverport/ from a web browser like Firefox.
 
 You will be able to obtain almost realtime data. A page reloaded every 27 seconds (Shift Block Time).
 
-### Browser notifications are works perfectly with Firefox Desktop and Mobile browsers.
+#### Browser notifications are works perfectly with Firefox Desktop and Mobile browsers.
+
+### Telegram
+For enabling messages from Telegram Bot you need to edit **config.json** file with all your proper data.
+
+>  "telegram": {
+
+>  "enabled" **// 'true' for Telegram messages;**
+
+>  "apiKey" **// your Bot API Token;**
+
+1. Start a conversation with: [**BotFather**](https://t.me/BotFather);
+2. Press: **/newbot**;
+3. Tell botfather your bot’s name;
+4. Tell botfather your bot’s username;
+5. BotFather will say “Congratulations!” and give you a token;
+6. Replace **apiKey** with your token;
+ 
+>  "chat_id" **// your Chat ID;**
+
+1. Open Telegram and start a conversation with: [**userinfobot**](https://t.me/userinfobot);
+2. Replace **chat_id** with your ID;
+  
+>  "timeout" **// timeout for messages in blocks (1 = 27 sec);**
+
+Telegram Bot will send you a bad message when one of your Nets is not forging and then a good message when it's forging again.
 
 ### Chromium based browsers
 For using with Chromium based browsers you should use a secure **https** connection for recieving notifications. You can enabled it in **config.json**:
@@ -60,9 +85,9 @@ For using with Chromium based browsers you should use a secure **https** connect
 
 >  "enabled" **// 'true' for https support;**
 
->  "options": {
-
 >  "port" **// port for https connection;**
+
+>  "options": {
  
 >  "key" **// your SSL private key;**
   
