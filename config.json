@@ -7,12 +7,18 @@
   "serverport": "9100",
   "ssl": {
     "enabled": false,
+    "port": "9191",	  
     "options": {
-    "port": "9191",
     "key": "/etc/letsencrypt/live/shifter.com/privkey.pem",
     "cert": "/etc/letsencrypt/live/shifter.com/fullchain.pem"
-     }
-  },	
+    }
+  },
+  "telegram": {
+    "enabled": false,
+    "apiKey": "yourBotToken",
+    "chat_id": "yourChatId",
+    "timeout": 4
+  }, 	
   "servers": {
     "server1": {
       "name": "tMaster",
