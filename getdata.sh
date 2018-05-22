@@ -90,6 +90,7 @@ jq -r '.servers|keys[]' $CONFIG |
     	fi
 
     	echo "  \"nextturn\": $NEXTTURN," >> tmp.file
+        NEXTTURN=$"null"
 
         RESPONSE=$(curl --connect-timeout 2 --fail -s $HTTP://$IP:$PORT/api/blocks?generatorPublicKey=$PUBLICKEY&limit=1)
         FORGED_BLOCK=$(echo $RESPONSE | jq '.blocks[0].height')
