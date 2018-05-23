@@ -74,7 +74,7 @@ For enabling messages from Telegram Bot you need to edit **config.json** file wi
 1. Open Telegram and start a conversation with: [**userinfobot**](https://t.me/userinfobot);
 2. Replace **chat_id** with your ID;
   
->  "timeout" **// timeout for messages in blocks (1 = 27 sec);**
+>  "timeout" **// timeout for messages in blocks (1 = 27 sec). Min timeout is 2;**
 
 Telegram Bot will send you a bad message when one of your Nets is not forging and then a good message when it's forging again.
 
