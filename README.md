@@ -106,3 +106,4 @@ Or you can start your Chromium based browser with this key:
 ## Output example
 
 ![Screenshot must be right here](https://github.com/MxShift/shift-monitor/blob/master/resources/Screenshot.png?raw=true "Screenshot")
+![Telegram Monitor](https://github.com/MxShift/shift-monitor/blob/master/resources/telegram-monitor.png)
