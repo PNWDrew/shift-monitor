@@ -9,6 +9,10 @@ Tool to watch your servers status. Height, Consensus and Forging status. Next tu
 * Make sure to add your new serverport numbers to your firewall. Instructions: [ShiftProject Wiki](https://www.reddit.com/r/ShiftProject/wiki/guides/delegate#wiki_step_seven_.2014_set_up_a_basic_firewall);
 
 ## Installation
+Clone this repository to your server.
+
+`git clone https://github.com/MxShift/shift-monitor.git`
+
 You need to edit **config.json** file with all your proper data. You can use it for Mainnet and Testnet both or only for Mainnet.
 
 > "m_name" **// Mainnet delagate username;**
@@ -43,9 +47,12 @@ After you finish and save your changes from **config.json**,
 
 Run **server.js** in a background process. You can use **screen**:
 
-`screen`
+`screen -R shift-monitor`
 
-`node server.js`
+```
+cd shift-monitor
+node server.js
+```
 
 **node server.js** will start a web server which you can access with http://serverip:serverport/ from a web browser like Firefox.
 
