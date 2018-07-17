@@ -1,4 +1,4 @@
-# Shift Monitor ( Server Version / [Web Version](https://github.com/MxShift/shift-webmonitor) )
+# Shift Monitor ( Server Version / [Web Version](https://github.com/PNWDrew/shift-webmonitor.git) )
 Tool to watch your servers status. Height, Consensus and Forging status. Next turn and last forged block time.
 
 ## Requisites
@@ -11,7 +11,7 @@ Tool to watch your servers status. Height, Consensus and Forging status. Next tu
 ## Installation
 Clone this repository to your server.
 
-`git clone https://github.com/MxShift/shift-monitor.git`
+`git clone https://github.com/PNWDrew/shift-monitor.git`
 
 You need to edit **config.json** file with all your proper data. You can use it for Mainnet and Testnet both or only for Mainnet.
 
